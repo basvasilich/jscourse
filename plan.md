@@ -17,6 +17,7 @@
 ---------------
 Это чуть более продвинутый уровень.
 Опять-таки все самое необходимое.
+http://learn.javascript.ru/#book-toc-137
 
   * Все — объекты.
   * Методы и свойства в объектах.
@@ -114,6 +115,7 @@ HTML5
 
   * localStorage
   * HistoryAPI, onhashchange
+  * FormData
   * ...
 
 Styleguide
