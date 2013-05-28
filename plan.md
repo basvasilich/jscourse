@@ -4,7 +4,7 @@
 Предлагаю всем свой план накидать, потом сведем и более подробно распишем.
 **Я в процессе пока что...**
 
-Уровень 0
+Уровень 0 - @basvasilich
 ---------------
 Это совсем база, после нее уже можно писать совсем простые программы.
 Хотя бы проговорить синтаксис операторов нужно. Разные нюансы всегда есть.
@@ -109,15 +109,35 @@ DOM
 
 Node.js
 -----------
+  * ???
+  * ???
 
-HTML5
+HTML5 — @basvasilich
 -----------
-Обзор полезных JS API.
+  * Обзор ECMAScript5
+    * https://developer.mozilla.org/en-US/docs/tag/ECMAScript5 
+    * https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5
 
-  * localStorage
-  * HistoryAPI, onhashchange
-  * FormData
-  * ...
+  * Обзор полезных JS API.
+    * localStorage
+      * https://developer.mozilla.org/en-US/docs/Web/Guide/DOM/Storage?redirectlocale=en-US&redirectslug=DOM%2FStorage 
+    * HistoryAPI
+      * http://diveintohtml5.info/history.html
+      * https://developer.mozilla.org/en-US/docs/Web/API/window.history
+    * onhashchange
+      * http://msdn.microsoft.com/en-us/library/cc288209(VS.85).aspx  
+      * https://developer.mozilla.org/en-US/docs/Web/API/window.onhashchange?redirectlocale=en-US&redirectslug=DOM%2Fwindow.onhashchange
+    * FormData
+    * FileAPI
+      * http://docs.webplatform.org/wiki/apis/file
+      * https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications
+    * JSON parsing
+       * https://developer.mozilla.org/en-US/docs/Using_native_JSON 
+    * Web Sockets
+      * https://developer.mozilla.org/en-US/docs/WebSockets/Writing_WebSocket_client_applications
+      * http://www.websocket.org/aboutwebsocket.html
+    * Drag ahd Drop
+      * https://developer.mozilla.org/en-US/docs/DragDrop/Drag_and_Drop 
 
 Styleguide
 ---------------
