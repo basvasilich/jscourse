@@ -1,0 +1,65 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my $filename = shift;
+
+my $md = `markdown $filename`;
+
+$md =~ s{<h1>(.*?)</h1>}{};
+
+my $title = $1;
+
+my @slides = split(/^<hr \/>$/sm, $md);
+
+my $html = <<HTML;
+<!doctype html>
+<html lang="en-us">
+<head>
+    <title>$title</title>
+    <meta charset="utf-8"/>
+    <!--
+    <meta name="viewport" content="width=1274, user-scalable=no"/>
+    -->
+    <link rel="stylesheet" href="../../shower/themes/ribbon/styles/screen.css"/>
+    <style>
+    .full .slide:after {
+        left: auto;
+        bottom: 1em;
+        right: 2em;
+    }
+    .slide pre code:before {
+        content: '';
+    }
+    .slide section:before {
+        background: none;
+    }
+    </style>
+</head>
+
+<body class="list">
+    <header class="caption">
+        <h1>$title</h1>
+    </header>
+
+HTML
+
+my $i = 0;
+for my $slide (@slides) {
+    $i++;
+    $slide =~ s{(<h2>.*?</h2>)}{<header>$1</header>}gsm;
+    $html .= <<HTML
+    <div class="slide" id="slide-$i"><div><section>$slide</section></div></div>
+
+HTML
+}
+
+$html .= <<HTML;
+
+    <script src="../shower/shower.min.js"></script>
+</body>
+</html>
+HTML
+
+print $html;
+
