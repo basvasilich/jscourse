@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="en-us">
 <head>
-    <title>OOP</title>
+    <title>Объекты</title>
     <meta charset="utf-8"/>
     <!--
     <meta name="viewport" content="width=1274, user-scalable=no"/>
     -->
     <link rel="stylesheet" href="../../shower/themes/ribbon/styles/screen.css"/>
+    <link rel="stylesheet" href="../../prism.css"/>
     <style>
     .full .slide:after {
         left: auto;
@@ -24,13 +25,239 @@
 
 <body class="list">
     <header class="caption">
-        <h1>OOP</h1>
+        <h1>Объекты</h1>
     </header>
 
     <div class="slide" id="slide-1"><div><section>
+
+<h2 id="section-1">Все — объекты</h2>
+
+<p>В <code>JavaScript</code> все (почти) является объектами.</p>
+
+<blockquote>
+  <p>Objects in JavaScript are mutable keyed collections.</p>
+</blockquote>
+
+<ul>
+  <li>Объект — это изменяемая коллекция свойств.</li>
+  <li>Свойство — пара «ключ — значение».</li>
+  <li>Ключ — любая строка.</li>
+  <li>Значение — что угодно.</li>
+</ul>
+
+</section></div></div>
+
+    <div class="slide" id="slide-2"><div><section>
+
+<h2 id="section-2">Свойства</h2>
+
+<p>(картинка)</p>
+
+</section></div></div>
+
+    <div class="slide" id="slide-3"><div><section>
+
+<h2 id="section-3">Свойства. Доступ</h2>
+
+<pre class="language-javascript"><code>//  Получение значения свойства.
+var id = obj.id;
+
+//  Альтернативный синтаксис.
+var isFoo = obj['is-foo'];
+</code></pre>
+
+</section></div></div>
+
+    <div class="slide" id="slide-4"><div><section>
+
+<h2 id="section-4">Свойства. Изменение</h2>
+
+<pre class="language-javascript"><code>//  Изменение значения свойства.
+obj.id = 'foo-42';
+obj['is-foo'] = true;
+
+//  Значением может быть что угодно,
+//  в том числе и `undefined`.
+obj.foo = undefined;
+</code></pre>
+
+</section></div></div>
+
+    <div class="slide" id="slide-5"><div><section>
+
+<h2 id="section-5">Свойства. Удаление</h2>
+
+<pre class="language-javascript"><code>//  Удаление свойства.
+delete obj.id;
+delete obj['is-foo'];
+</code></pre>
+
+</section></div></div>
+
+    <div class="slide" id="slide-6"><div><section>
+
+<h2 id="section-6">Свойства. Итерация</h2>
+
+<pre class="language-javascript"><code>//  Итерация по всем свойствам объекта.
+for (var key in obj) {
+    var value = obj[key];
+    ...
+}
+</code></pre>
+
+</section></div></div>
+
+    <div class="slide" id="slide-7"><div><section>
+
+<h2 id="section-7">Не все — объекты</h2>
+
+<p>Примитивные типы — <code>String</code>, <code>Number</code>, <code>Boolean</code> ведут себя как объекты,
+но являются неизменяемыми.</p>
+
+<pre><code>var foo = 42;
+foo.bar = 'Hello';
+
+foo.bar // undefined
+</code></pre>
+
+</section></div></div>
+
+    <div class="slide" id="slide-8"><div><section>
+
+<h2 id="section-8">Не все — объекты</h2>
+
+<p><code>null</code> и <code>undefined</code> не являются объектами.</p>
+
+<pre class="language-javascript"><code>var foo = null.foo; //  Ошибка!
+var bar = undefined.bar;
+
+//  Но. При этом:
+(typeof null === 'object') // true
+</code></pre>
+
+</section></div></div>
+
+    <div class="slide" id="slide-9"><div><section>
+
+<h2 id="section-9">Функции — тоже объекты</h2>
+
+<pre class="language-javascript"><code>var f = function() {};
+
+f.foo = 42;
+var foo = f.foo // 42
+</code></pre>
+
+</section></div></div>
+
+    <div class="slide" id="slide-10"><div><section>
+
+<h2 id="section-10">Свойства и методы</h2>
+
+<p>Методы — это свойства, значениями которых являются функции:</p>
+
+<pre class="language-javascript"><code>obj.doSomething = function() {
+    ...
+};
+
+obj.doSomething();
+</code></pre>
+
+</section></div></div>
+
+    <div class="slide" id="slide-11"><div><section>
+
+<h2 id="object-literal">Object literal</h2>
+
+<p>Простое создание объектов:</p>
+
+<pre class="language-javascript"><code>var obj = {}; // Пустой объект.
+obj = {
+    foo: 42,
+    doSomething: function() {
+        ...
+    }
+};
+</code></pre>
+
+</section></div></div>
+
+    <div class="slide" id="slide-12"><div><section>
+
+<h2 id="section-11">Доступ из методов к объекту</h2>
+
+<pre class="language-javascript"><code>obj = {
+    id: 42,
+    getId: function() {
+        return this.id;
+    }
+};
+obj.getId(); // 42
+</code></pre>
+
+</section></div></div>
+
+    <div class="slide" id="slide-13"><div><section>
+
+<h2 id="this"><code>this</code></h2>
+
+<p>Внутри метода <code>this</code> указывает на объект,
+метод которого вызван. Это позволяет получить
+доступ к другим свойствам и методом этого объекта.</p>
+
+<pre class="language-javascript"><code>obj.getId = function() {
+    return this.id;
+}
+</code></pre>
+
+</section></div></div>
+
+    <div class="slide" id="slide-14"><div><section>
+
+<h2 id="this-1"><code>this</code></h2>
+
+<p><code>this</code> указывает на объект только тогда,
+когда соответствующая функция вызывается как метод объекта:</p>
+
+<pre class="language-javascript"><code>var getId = obj.getId;
+
+obj.getId(); // 42
+getId(); // ???
+</code></pre>
+
+</section></div></div>
+
+    <div class="slide" id="slide-15"><div><section>
+
+<h2 id="section-12">Дальше</h2>
+
+<ul>
+  <li>
+    <p>Prototype.</p>
+  </li>
+  <li>
+    <p><code>hasOwnProperty()</code>.</p>
+  </li>
+  <li>
+    <p>Создание объектов. Object literal, конструктор, <code>Object.create</code>.</p>
+  </li>
+  <li>
+    <p>Наследование.</p>
+  </li>
+  <li>
+    <p>Полиморфизм.</p>
+  </li>
+  <li>
+    <p>Инкапсуляция. Приватность.</p>
+  </li>
+  <li>
+    <p><code>instanceof</code>.</p>
+  </li>
+</ul>
+
 </section></div></div>
 
 
-    <script src="../shower/shower.min.js"></script>
+    <script src="../../shower/shower.min.js"></script>
+    <script src="../../prism.js"></script>
 </body>
 </html>
