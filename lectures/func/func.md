@@ -1,4 +1,5 @@
-===Functions
+Functions
+=========
   * Синтаксис
     * function foo(){alert('hello')};
     * new Function("alert('hello')");
