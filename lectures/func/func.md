@@ -1,7 +1,8 @@
 Functions
 =========
   * Синтаксис
-    * function foo(){alert('hello')};
+    * function foo(){};
+    * var foo = function(){}
     * new Function("alert('hello')");
     * Лямбда функции JS 1.8 function foo(x) x * x; ???
     * Хоистинг
